@@ -18,13 +18,6 @@ export class GoogleAnalyticsComponent extends LitElement {
     scriptOne.src = "https://www.googletagmanager.com/gtag/js?id=UA-63899225-2";
     this.appendChild(scriptOne);
 
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function() {
-      window.dataLayer.push(arguments);
-    };
-    window.gtag("js", new Date());
-    window.gtag("config", "${this.account}");
-
     // const scriptTwo = document.createElement("script");
     // scriptTwo.innerText = `
     //   window.dataLayer = window.dataLayer || [];
@@ -33,6 +26,13 @@ export class GoogleAnalyticsComponent extends LitElement {
     //   gtag('config', '${this.account}');
     // `;
     // this.appendChild(scriptTwo);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function() {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", this.account);
   }
 
   public observeLocation() {
