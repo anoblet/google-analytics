@@ -3,7 +3,7 @@ import { LitElement, customElement, html, property } from "lit-element";
 @customElement("google-analytics")
 export class Component extends LitElement {
   @property({ attribute: "property-id", reflect: true }) propertyId: string;
-  @property({ attribute: "single-page", reflect: true })
+  @property({ attribute: "single-page", reflect: true, type: Boolean })
   singlePage: boolean = false;
   @property() pollingInterval: number = 100;
 

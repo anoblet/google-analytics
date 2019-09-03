@@ -1,5 +1,5 @@
 Google Analytics
 
 ```
-<google-analytics account="UA-XXXXXXXX-X"></google-analytics>
+<google-analytics property-id="UA-XXXXXXXX-X" single-page></google-analytics>
 ```
