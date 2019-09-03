@@ -20,6 +20,7 @@ export class Component extends LitElement {
   public install() {
     const script = document.createElement("script");
     script.src = `https://www.googletagmanager.com/gtag/js?id=${this.propertyId}`;
+    script.async = true;
     document.head.appendChild(script);
 
     // Register
