@@ -13,8 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lit-element": "^2.2.0",
-    "pwa-helpers": "^0.9.1"
+    "lit-element": "^2.2.0"
   },
   "devDependencies": {
     "rollup": "^1.16.6",
