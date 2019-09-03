@@ -1,7 +1,7 @@
 import { LitElement, customElement, html, property } from "lit-element";
 
 @customElement("google-analytics")
-export class GoogleAnalyticsComponent extends LitElement {
+export class Component extends LitElement {
   @property() account: string;
 
   createRenderRoot() {
