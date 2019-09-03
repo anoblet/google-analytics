@@ -2,7 +2,7 @@ import { LitElement, customElement, html, property } from "lit-element";
 
 @customElement("google-analytics")
 export class Component extends LitElement {
-  @property() account: string;
+  @property({ attribute: "property-id", reflect: true }) propertyId: string;
 
   createRenderRoot() {
     return this;
@@ -15,7 +15,7 @@ export class Component extends LitElement {
 
   public install() {
     const scriptOne = document.createElement("script");
-    scriptOne.src = "https://www.googletagmanager.com/gtag/js?id=UA-63899225-2";
+    scriptOne.src = `https://www.googletagmanager.com/gtag/js?id=${this.propertyId}`;
     this.appendChild(scriptOne);
 
     // const scriptTwo = document.createElement("script");
@@ -23,7 +23,7 @@ export class Component extends LitElement {
     //   window.dataLayer = window.dataLayer || [];
     //   function gtag(){dataLayer.push(arguments);}
     //   gtag('js', new Date());
-    //   gtag('config', '${this.account}');
+    //   gtag('config', '${this.propertyId}');
     // `;
     // this.appendChild(scriptTwo);
 
@@ -32,7 +32,7 @@ export class Component extends LitElement {
       window.dataLayer.push(arguments);
     };
     window.gtag("js", new Date());
-    window.gtag("config", this.account);
+    window.gtag("config", this.propertyId);
   }
 
   public observeLocation() {
@@ -40,7 +40,7 @@ export class Component extends LitElement {
     setInterval(() => {
       if (window.location.pathname !== currentPath) {
         currentPath = window.location.pathname;
-        window.gtag("config", this.account, { page_path: currentPath });
+        window.gtag("config", this.propertyId, { page_path: currentPath });
       }
     }, 100);
   }
