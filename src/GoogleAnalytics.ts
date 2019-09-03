@@ -8,11 +8,8 @@ export class Component extends LitElement {
   @property({ attribute: "polling-interval", reflect: true })
   pollingInterval: number = 100;
 
-  createRenderRoot() {
-    return this;
-  }
-
-  firstUpdated() {
+  connectedCallback() {
+    super.connectedCallback();
     this.install();
     if (this.singlePage) this.observeLocation();
   }
