@@ -1,11 +1,12 @@
-import { LitElement, customElement, html, property } from "lit-element";
+import { UpdatingElement, customElement, property } from "lit-element";
 
 @customElement("google-analytics")
-export class Component extends LitElement {
-  @property({ attribute: "property-id", reflect: true }) propertyId: string;
+export class Component extends UpdatingElement {
+  @property({ attribute: "property-id", reflect: true, type: String })
+  propertyId: string;
   @property({ attribute: "single-page", reflect: true, type: Boolean })
   singlePage: boolean = false;
-  @property({ attribute: "polling-interval", reflect: true })
+  @property({ attribute: "polling-interval", reflect: true, type: String })
   pollingInterval: number = 100;
 
   connectedCallback() {
@@ -37,9 +38,5 @@ export class Component extends LitElement {
         window.gtag("config", this.propertyId, { page_path: currentPath });
       }
     }, this.pollingInterval);
-  }
-
-  render() {
-    return html``;
   }
 }
